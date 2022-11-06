@@ -3,3 +3,9 @@ function solution(array) {
     array.sort((a,b)=>a-b);
     return array[Math.ceil(half)];
 }
+
+/*
+function solution(array) {
+    return array.sort((a, b) => a - b)[Math.floor(array.length / 2)];
+}
+*/
