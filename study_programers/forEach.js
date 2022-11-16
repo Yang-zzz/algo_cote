@@ -6,23 +6,23 @@
  */
 
 //예시 배열
-let arr =[5, 10, 7, 20, 8];
-const callback = function(value, index) {
+let arr = [5, 10, 7, 20, 8];
+const callback = function (value, index) {
     return console.log(`${index} 번째 값 : ${value}`)
 };
 
 function MyforEach(array, callback) {
-    if(!Array.isArray(array)) {
-        return console.log('array가 아닙니다.')
-    } else if(Array.isArray(array)) {
-        for(let i=0; i<array.length; i++) {
-            if(typeof(callback)===typeof(function(){})) {
+    if (!Array.isArray(array)) {
+        return console.log('not array')
+    } else if (Array.isArray(array)) {
+        for (let i = 0; i < array.length; i++) {
+            if (typeof (callback) === typeof (function () { })) {
                 callback(array[i], i)
             } else {
-                return console.log('not 함수')
+                return console.log('not function')
             }
-    }
- };
+        }
+    };
 }
 
 
