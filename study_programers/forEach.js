@@ -4,8 +4,8 @@
  * @param array 순회할 배열
  * @param callback (value, index) 형식의 2개의 param을 갖는 함수
  */
-
 //예시 배열
+
 let arr = [5, 10, 7, 20, 8];
 const callback = function (value, index) {
     return console.log(`${index} 번째 값 : ${value}`)
@@ -26,5 +26,6 @@ function MyforEach(array, callback) {
 }
 
 
-// MyforEach(123,(value, index) => {}); // 'array가 아닙니다.'
+MyforEach(123,(value, index) => {}); // 'array가 아닙니다.'
 MyforEach(arr, 123); // '함수가 아닙니다.'
+MyforEach(arr, callback);
