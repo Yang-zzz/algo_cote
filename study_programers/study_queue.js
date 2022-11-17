@@ -14,6 +14,8 @@ let rear = -1; // 초기값 필요
  * 6. front와 rear가 같은 위치에 있을 때 dequeue()가 호출되면 front와 rear의 위치가 초기화 된다.
  */
 
+// 구현 답안
+
 /**
  * queue 초기화
  */
@@ -87,3 +89,61 @@ console.log(front)
 // dequeue(); // [null, 10, null, null, null] -> 5반환
 // enqueue(7); // [null, 10, 7, null, null]
 // dequeue(); // [null, null, 7, null, null] -> 10 반환
+
+// 강사 답안
+
+function init() {
+	for(let i = 0; i<QUEUE_SIZE; i++) {
+		queue[i] = null;
+	}
+	reset();
+}
+
+function reset() {
+	front = -1;
+	rear = -1;
+}
+
+/**
+ * queue에 값을 집어 넣는다.
+ */
+function enqueue(value) {
+	if(rear === QUEUE_SIZE - 1) {
+		console.error('queue over flow');
+		return;
+	}
+	
+	if(front < 0) {
+		front = 0;
+	}
+	rear++;
+	queue[rear] = value;
+}
+
+/**
+ * queue에서 값을 빼낸다.
+ */
+function dequeue() {
+	if(front < 0) {
+		return -1;
+	}
+	
+	const value = queue[front];
+	queue[front] = null;
+	
+	if(front === rear) {
+		// [null, null, null, null, null]
+		reset();
+	} else {
+		front++;
+	}
+	return value;
+}
+
+/**
+ * 현재 Queue의 사이즈를 반환한다.
+ * [null, 5, 2, 3, null] 인 경우 3이 반환 돼야함
+ */
+function size() {
+	return rear - front + 1;
+}

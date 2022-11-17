@@ -11,6 +11,7 @@ const callback = function (value, index) {
     return console.log(`${index} 번째 값 : ${value}`)
 };
 
+// 구현 답안
 function MyforEach(array, callback) {
     if (!Array.isArray(array)) {
         return console.log('not array')
@@ -29,3 +30,25 @@ function MyforEach(array, callback) {
 MyforEach(123,(value, index) => {}); // 'array가 아닙니다.'
 MyforEach(arr, 123); // '함수가 아닙니다.'
 MyforEach(arr, callback);
+
+// 강사답안
+function forEach(array, callback) {
+	if(!Array.isArray(array)) {
+		// array가 아닐경우
+		console.error(`${array}는 Array 가 아닙니다.`);
+		return;
+	}
+	
+	if(typeof callback !== 'function') {
+		// callback이 함수가 아닐 경우
+		console.error(`${callback}는 function이 아닙니다.`);
+		return;
+	}
+	let i;
+	for(i = 0; i < array.length; ++i) {
+		callback(array[i], i);
+	}
+	for(let i = 0; i < array.length; ++i) {
+		callback(array[i], i);
+	}
+}

@@ -11,6 +11,8 @@
  const STACK_SIZE = 5; // 스택의 최대 사이즈
  let top; // 초기값 필요
 
+ // 구현 답안
+
 /* * stack 초기화 */
 function init() {
     for(let i=0; i<STACK_SIZE; i++){
@@ -71,3 +73,50 @@ console.log(stack);
 // peek(); // 1 반환
 // pop(); // [5, null, null, null, null] -> 10반환
 // peek(); // 0 반환
+
+
+// 강사 답안
+
+
+/**
+ * stack 초기화
+ */
+ function init() {
+    for (let i = 0; i < STACK_SIZE; ++i) {
+        stack[i] = null;
+    }
+}
+
+/**
+ * stack에 값을 집어 넣는다.
+ */
+function push(value) {
+    if (top === STACK_SIZE - 1) {
+        console.log("stack over flow");
+        return;
+    }
+
+    ++top;
+    stack[top] = value;
+}
+
+/**
+ * stack에서 값을 빼낸다.
+ */
+function pop() {
+    if(top < 0) {
+        return -1;
+    }
+
+    const value = stack[top];
+    stack[top] = null;
+    --top;
+    return value;
+}
+
+/**
+ * 현재 top의 위치를 반환한다.
+ */
+function peek() {
+    return top;
+}
